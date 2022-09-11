@@ -1,0 +1,258 @@
+/* 关卡四：朝代认知 */
+
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none; 
+}
+html, body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.game_body{
+    position: relative;
+    margin:0 auto;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgb(211, 229, 250); */
+    background-image: url(../img/fourth/bg4.png);
+    overflow: hidden;
+}
+#pre_page{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 99;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-flow: column ;
+    /* display: none; */
+} 
+#text p{
+    text-align: center;
+    margin: 10%;
+    font-family: '幼圆';
+    font-weight: 600;
+    font-size: 2vw;
+    line-height: 30px;
+    flex-shrink:0;
+}
+#start{
+    width: 15%;
+    flex: 1;
+    margin: auto;
+    min-width:100px;max-width:200px;
+}
+#start img{
+    width: 100%;
+}
+.inner_page{
+    width: 100%;
+    overflow: hidden;
+}
+.progress{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 13px;
+    background: url(../img/first/progress.png);
+}
+
+
+
+
+#up{
+    position: absolute;
+    z-index: 90;
+    width: 100%;
+    height: 140px;
+}
+#mid{
+    width: 400px;
+    height: 100px;
+    margin: 20px auto;
+    background-image: url("../img/fourth/mid.png");
+}
+#play1{
+    width: 170px;
+    height: 100px;
+    float: left;
+    margin: auto;
+    
+}
+/* 玩家一的分数，左侧 */
+#score1{
+    margin-top: 20px;
+    font-size: 60px;
+    text-align: center;
+    font-family: 华文琥珀;
+}
+#play2{
+    width: 170px;
+    height: 100px;
+    float: right;
+    margin: auto;
+}
+/*玩家二的分数右侧  */
+#score2{
+    margin-top: 20px;
+    font-size: 60px;
+    text-align: center;
+    font-family: 华文琥珀;
+}
+#left{
+    position: absolute;
+    width: 500px;
+    height: 100px;
+    left: 0;
+    top: 20px;
+    
+}
+#right{
+    position: absolute;
+    width: 500px;
+    height: 100px;
+    right: 0;
+    top: 20px;
+}
+#l1{
+    text-align: center;
+    font-size: 30px;
+}
+#l2{
+    text-align: center;
+    font-size: 30px;
+}
+#Lives1{
+    position: absolute;
+    z-index: 90;
+    left: 150px;
+    top: 70px;
+}
+#Lives2{
+    position: absolute;
+    z-index: 90;
+    right: 150px;
+    top: 70px;
+}
+/* 玩家一，左侧 */
+#people1{
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+/* 玩家二，右侧 */
+#people2{
+    width: 140px;
+    height: 140px;	
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+/*唐朝诗人宋朝诗人， js动态创建*/
+.tang{
+    position: absolute;
+    z-index: 20;
+    top: -100px;
+    width: 140px;
+    height: 100px;
+    background-color: rgba(0,0,0,0);
+    overflow: hidden;
+}
+.song{
+    position: absolute;
+    z-index: 20;
+    top: -200px;
+    width: 140px;
+    height: 100px;
+    overflow: hidden;
+}
+.chances{
+    position: absolute;
+    z-index: 20;
+    top: -200px;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+}
+.restart{
+    margin-top: 10%;
+    margin-left: 30%;
+    overflow: hidden;
+    text-align: center;
+    width: 40%;
+    min-width: 300px;
+    min-height: 300px;
+    border: 1px solid gainsboro;
+    background: black;
+    opacity: 0.8;
+    display: none;
+    position: absolute;
+    z-index: 99;
+    overflow: hidden;
+}
+.gameover{
+    width: 100%;
+    color: white;
+    font-family: 'Courier New';
+    font-size: 2em;
+    margin-top:20% ;
+    text-align: center;
+}
+.scoring1{
+    width: 100%;
+    height: 50px;
+    color:red;
+    margin-top: 20px;
+    line-height: 50px;
+    text-align: center;
+    background: palegreen;
+    font-size: 2em;
+    }
+    .scoring2{
+    width: 100%;
+    height: 50px;
+    color:red;
+    line-height: 50px;
+    text-align: center;
+    background: palegreen;
+    font-size: 2em;
+    }
+/* 上一关卡 */
+.previous{
+    width: 100%;
+    height: 30px;
+    text-align: center;
+}
+.previous a{
+    color: rgb(237, 237, 237);
+    font-size: 2em;
+    text-decoration: none;
+}
+.restart_btn{
+    width: 100%;
+    height: 100px;
+    color: blanchedalmond;
+    line-height: 100px;
+    font-size: 2em;
+    text-align: center;
+    cursor: pointer;
+}
+.close{
+    width: 100%;
+    height: 50px;
+    color: palevioletred;
+    font-size: 2em;
+    text-align: center;
+} 
+.close a{
+    color: white;
+    text-decoration: none;
+}
+.close a:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS创意游戏-index</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    
+</head>
+
+<script type="text/javascript">
+  window.onload = function(){
+  //加载项
+  disptime();
+  move();//温馨提示
+  mousefollow();//鼠标跟随
+  music=document.getElementById("music");
+  }
+   //温馨提示方法
+	 function move(){
+        document.getElementById("float_ads").style.left=(Math.random()*80)+"%";
+        document.getElementById("float_ads").style.top = (Math.random()*80)+"%";
+        setTimeout("move()",2000);
+        document.getElementById("close").onclick=function(){
+        document.getElementById("float_ads").style.display="none";
+        }    
+    }   
+    //温馨提示关闭方法
+    function close(){
+    document.getElementById("float_ads").style.display="none";
+    }
+	//时间方法
+  function disptime( )
+  {
+   var time = new Date( ); //获得当前时间
+   var hour = time.getHours( );  //获得小时、分钟、秒
+   var minute = time.getMinutes( );
+   var second = time.getSeconds( );
+   document.getElementById("time").innerHTML="<p>"+"当前北京时间"+hour+":"+minute+":"+ second+" "+"</p>";
+   timeId=setTimeout("disptime()",1000);
+  }
+  //鼠标跟随
+  function mousefollow(){
+	var goAfter=document.getElementById("goAfter");	
+	var goAfterx=window.event.pageX+10;
+	var goAftery=window.event.pageY+10;	
+	goAfter.style.left=goAfterx+"px";
+	goAfter.style.top=goAftery+"px";	
+  }
+  </script>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+  }
+  html,body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  /* 鼠标跟随 */
+  #goAfter{
+  position: absolute;
+  z-index: 1003;
+  color: #1c39ab;
+  font-family: "华文琥珀";
+  }
+    /* 温馨提示 */
+    #float_ads{
+   position: relative;
+    width: 10vw;
+}
+ #div1{
+	display: inline-block;
+	width: 20vw;
+  height: 13vw;
+	position: absolute;
+  z-index: 30;
+  background-color:rgb(255, 128, 123,0);
+	border: 0px solid rgb(228, 128, 128);
+	border-radius: 20px ;
+ }
+ #div1 h3{
+  margin-top: 10px;
+	font-weight: 1000;
+	font-family: "黑体";
+  font-size: 1.6vw;
+ }
+ #div1 p{
+  font-family: "幼圆";
+	font-size: 1.5vw;
+  margin-top: 5px;
+  font-weight: 700;
+  color: rgb(0, 35, 130);
+ }
+ #div2{
+	position: absolute;
+	z-index: 50;
+	margin-left: 16.5vw;
+ }
+ #div2 :hover{
+  cursor: pointer;
+ }
+  .game_body{
+    margin:0 auto;
+    width: 100%;
+    height: 100%;
+    background: url("img/bg0.jpg");
+    background-size:100%;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    display: flex;
+    flex-flow: column ;
+    overflow: hidden;
+  }
+  .bgsound{
+  position: absolute;
+  z-index: 2;
+  background-color: #5d5e66;
+  text-align: center;
+  width: 100%;
+  }
+  #name{
+  width: 100%;
+  margin: auto;
+  margin-top: 15%;
+  position: absolute;
+  z-index: 5;
+  text-align: center;
+  font-size: 5vw;
+  font-weight: 700;
+  font-family: "华文彩云";
+  background: linear-gradient(to right, red, orange, yellow, green, cyan, blue,  purple);
+  background-clip: text;
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent;
+  animation:  hue 3s linear infinite;
+  } 
+  @keyframes hue {
+    0% {
+        filter: hue-rotate(0deg);
+        transform: scale(1.0);
+    }
+    12%{
+      transform: scale(1.15);
+    }
+    25% {
+        transform: scale(1.3);
+    }
+    37%{
+      transform: scale(1.15);
+    }
+    50%{
+      transform: scale(1.0);
+    }
+    62%{
+      transform: scale(0.9);
+    }
+    75%{
+      transform: scale(0.8);
+    }
+    87%{
+      transform: scale(0.9);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+        transform: scale(1.0);
+    }
+  } 
+  #start{
+    width:100%;
+    margin: auto;
+    position: absolute;
+    z-index: 2;
+    margin-left: 40%;
+    margin-top: 25%;
+  }
+  #start a{
+    text-decoration: none;
+    display: table-cell;
+    vertical-align: middle;
+    text-align:center;
+    width:16vw;
+    height: 8vw;
+    font-size: 3vw;
+    font-weight: 500;
+    font-family: "宋体";
+    color: rgb(0, 0, 0);
+    border: 0.2vw solid rgb(0, 0, 0);
+    border-radius: 5vw;
+  }
+  #start a:hover{
+    text-decoration: none;
+    font-family: "华文彩云";
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    background-color: rgb(254, 89, 89);
+    transform: scale(1.1);
+    transition: 0.2s;
+  }
+  #function{
+    width:100%;
+    margin: auto;
+    position: absolute;
+    z-index: 99;
+    margin-left: 40%;
+    margin-top: 35%;
+  }
+  #function a{
+    text-decoration: none;
+    display: table-cell;
+    vertical-align: middle;
+    text-align:center;
+    width:16vw;
+    height: 8vw;
+    font-size: 3vw;
+    font-weight: 500;
+    font-family: "宋体";
+    color: rgb(0, 0, 0);
+    border: 0.2vw solid rgb(0, 0, 0);
+    border-radius: 5vw;
+  }
+  #function a:hover{
+    text-decoration: none;
+    font-family: "华文彩云";
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    background-color: rgb(91, 229, 253);
+    transform: scale(1.1);
+    transition: 0.2s;
+  }
+  /* 侧边栏实际状态(被隐藏) */
+.sidebar {
+    float: left;
+    width: 7vw;
+    margin-top: 20%;
+    margin-left: -7vw;
+    transition: 0.2s all;
+    position: relative;
+    border-radius: 0px;
+}
+.sidebar img{
+  width: 100%;
+  background-color:rgba(0, 0, 0, 0.6);
+}
+.sidebar ul li {
+  list-style: none;
+  height: 7vw;
+}
+.sidebar ul li a {
+    width:100%;
+    text-align: center;
+    display: block;
+    transition: 0.1s all;
+}
+.sidebar ul li img:hover {
+    background:rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+/* 背景层 */
+.back_layer{ 
+  clear: both;
+  display: none;
+  position: fixed; 
+  top: 0%; 
+  left: 0%; 
+  width: 100%; 
+  height: 100%; 
+  background-color: black; 
+  -moz-opacity: 0.8; 
+  opacity:0.8; 
+  filter: alpha(opacity=88);  
+} 
+/* 弹出层 */
+.popups { 
+  display: none; 
+  position: absolute; 
+  margin:0 auto;
+  top: 25%; 
+  left: 25%;
+  width: 40vw;
+  height: 40%;
+  padding: 2vw; 
+  border: 0.5vw solid rgb(203, 39, 39); 
+  background-color: rgb(253, 242, 242); 
+  z-index:1002; 
+  border-radius: 30px;
+  font-size: 2vw;
+} 
+img{
+  float: right;
+}
+table{
+  margin-top:4vw;
+}
+table tr th{
+  width: 12vw;
+  height: 4vw;
+  background-color: none; 
+  border:5px double rgb(195, 0, 0);
+  border-radius: 30px;
+  font-size: 25px;
+}
+table tr th a{
+  text-decoration: none;
+  color: black;
+  font-size: 1.5vw;
+}
+table tr th a:hover{
+  color: rgb(255, 255, 255);
+}
+  table tr th:hover{
+  transform: scale(1.1);
+  transition: 0.3s;
+  background-color:  rgb(195, 0, 0);
+  border:5px double rgb(255, 255, 255);
+  border-radius: 30px;
+  color: aliceblue;
+  cursor: pointer;
+}
+
+  #preword{
+  width: 100%;
+  margin: auto;
+}
+  p{
+  width: 100%;
+  margin-top:3vw;
+  font-size: 1.5vw;
+  font-family: "幼圆";
+  font-weight: 700;
+  line-height: 1.5;
+}
+</style>
+<body  onmousemove="mousefollow()">
+  <audio src="bgsound.mp3" autoplay="autoplay" loop="-1" id="music"></audio>
+    <!--温馨提示-->
+    <div  id="float_ads">
+      <div id="div1" >
+       <h3>温馨提示:</h3>
+       <div id="time"></div>
+       <p>健康的身体，锻造健康的战士。长时间游戏对健康不利。</p>
+      </div>
+      <div id="div2">
+        <img src="./img/index/close.png" alt="" id="close" type="button" vaule="关闭">
+      </div>  
+      </div>
+  <!-- 鼠标跟随 -->
+  <div id="goAfter" >
+    <br><br>
+    &nbsp&nbsp&nbsp&nbsp五个臭皮匠队
+    </div>
+<div class="game_body">
+  <a class="btn"></a>
+  <script type="text/javascript">
+  $('.btn').on('click',function () {
+      // 侧边栏切换形态
+      $('.btn').toggleClass('btna');
+      $('.sidebar').toggleClass('side');
+  })
+  </script>
+    <!-- 游戏模块 -->
+    <div id="name">
+      知识大战
+    </div>
+    <div id="start">
+      <a href="javascript:void(0)" 
+      onclick = "document.getElementById('type').style.display='block';document.getElementById('fade').style.display='block'">开始游戏</a>
+    </div>
+    <div id="function">
+        <a href = "javascript:void(1)" onclick = "document.getElementById('rule').style.display='block';document.getElementById('fade').style.display='block'">
+          规则说明</a>
+    </div>
+</div>
+    
+    <div id="type" class="popups">
+			<a href = "javascript:void(0)" 
+      onclick = "document.getElementById('type').style.display='none';
+      document.getElementById('fade').style.display='none'">
+      <img src="./img/index/close.png" alt=""></a>
+      <div id="preword">
+        <p>亲爱的玩家:<br>
+            我们的游戏类型从"中华文化"层面出发，涉及几种不同知识类型。<br>
+            请选择您希望体验的游戏类型。<br>
+        </p>
+      </div>
+      <table class="table">
+        <tr class="start">
+          <th><a href="story1.html"">音节辨别</a></th>
+          <th><a href="story2.html" >平仄区分</a></th>
+          <th><a href="story3.html" >天干地支</a></th>
+          <th><a href="story4.html" >诗人朝代</a></th>
+
+        </tr>
+      </table>
+		</div> 
+    
+  <div id="rule" class="popups"> 
+		<a href = "javascript:void(1)" onclick = "document.getElementById('rule').style.display='none';document.getElementById('fade').style.display='none'">
+      <img src="./img/index/close.png" alt=""></a>
+    <div id="preword">
+      <p>规则说明<br>
+        1.可选择任意关卡进行比拼，玩家双方初始血量各为三点，每错接一次扣一点，漏接不扣。
+          可通过下落的红心补充血量，一颗红心恢复一点血量，至多补满。<br>
+       <br>
+       2.在游戏结束前，若其中一名玩家血量归零，则该玩家失败，另一玩家胜出；
+       否则，游戏分数较高的玩家胜出。<br>
+      </p>
+    </div>
+  </div> 
+		</div> 
+    <div id="fade" class="back_layer"></div>
+</body>
+</html>

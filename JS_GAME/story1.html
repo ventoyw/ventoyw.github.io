@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>关卡一：音节辨别</title>
+    </head>
+    <style >
+    * {
+        margin: 0;
+        padding: 0;
+    }
+      html,body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-image: url("./img/first/bg1.jpg");
+        display: flex;
+        flex-flow:column;
+      }
+    #test{
+        margin: auto;
+        width: 60vw;
+        padding: 70px 0;
+        color: rgb(31, 29, 29);
+        font-size: 4vw;
+        font-weight: 700;
+        font-family: '宋体';
+        top:0;
+        right: 0;
+        flex: 6;
+    }
+    #skip{
+        flex: 4;
+        top:0;
+        margin: auto;  
+    }
+    #skip a{
+        display: inline-block;
+        padding-top: 1vw;
+        width: 15vw;
+        height: 5vw;
+        text-align: center;
+        background-color:rgba(233, 233, 233, 0);
+        border: 0.2vw solid rgb(0, 0, 0);
+        border-radius: 3vw;
+        text-decoration: none;
+        color: black;
+        font-family: '宋体';
+        font-size: 3vw;
+    }
+    #skip a:hover{
+        background-color: rgb(230, 230, 230);
+        transform: scale(1.1);
+        transition: 0.2s;
+    }
+    </style>
+    <script>
+
+        var text = "神秘的天空城是每一只小鸟都想到达的地方。小红和小绿决定一探究竟，他们终于飞到了天空城前的屏障，只有被知识武装的小鸟才能打破这个屏障。快来获取知识，帮小鸟完成它的梦想吧！";
+        var num = text.length;
+        var i =0;
+        function show() {
+            var show_text = text.substr(0,i);
+            document.getElementById("test").innerHTML = show_text;
+            i++;
+            if(i+1>= num){
+                clearInterval("done");
+            }
+        }
+        var done=setInterval("show()",200);
+        setTimeout(function(){
+        window.location.href='syllable.html';
+        },18600) 
+    
+        let story = new SpeechSynthesisUtterance();
+        story.text = '神秘的天空城是每一只小鸟都想到达的地方。小红和小绿决定一探究竟，他们终于飞到了天空城前的屏障，只有被知识武装的小鸟才能打破这个屏障。快来获取知识，帮小鸟完成它的梦想吧！';
+        story.lang = 'zh';//汉语
+        story.rate = 1.3;//语速
+        speechSynthesis.speak(story);
+        function stop(){
+            speechSynthesis.cancel();
+        }
+    </script>
+    <body >
+        <div id = "test"></div>
+        <div id="skip"><a href="syllable.html" onclick="stop()">跳过介绍</a></div>
+    </body>
+    </html>

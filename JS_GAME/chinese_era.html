@@ -1,0 +1,84 @@
+<!-- 天干地支玩法介绍
+    双人游戏
+    玩家一：左侧仓鼠，按动 A S D W控制仓鼠移动，吃到天干加分，吃到地支减分 
+    玩家二：右侧松鼠，按动↑↓←→控制松鼠移动，吃到地支加分，吃到天干减分 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, heaven-scale=1.0">
+    <title>关卡三：天干地支</title>
+    <link rel="stylesheet" href="css/chinese_era.css">
+</head>
+<body>
+    <div class="game_body">
+        <audio src="bgsound3.mp3" autoplay="autoplay" loop="-1"></audio>
+        <div id="pre_page"> 
+            <div id="text">
+            <p>天干地支玩法介绍<br>
+                双人游戏<br>
+                玩家一：左侧仓鼠，按动 A S D W控制仓鼠移动，吃到天干加分，吃到地支减分 <br>
+                玩家二：右侧松鼠，按动↑↓←→控制松鼠移动，吃到地支加分，吃到天干减分
+            </p>
+            </div>
+            <div id="start">
+                <a href = "javascript:void(0)" 
+				onclick = "document.getElementById('text').style.display='none';
+				           document.getElementById('start').style.display='none';
+                           document.getElementById('pre_page').style.display='none';">
+				<img src="./img/a.png" alt=""></a>
+            </div>
+        </div>
+        <div class="progress"></div>
+           <!--分数-->
+           <div id="up">
+            <div id="mid">
+                <div id="play1">
+                     <!-- <div id="s1">得  分：</div> -->
+                     <div id="score1">0</div>
+                </div>
+                 <div id="play2">
+                     <!-- <div id="s2">：得  分</div> -->
+                     <div id="score2">0</div>
+                 </div>                    
+            </div>
+            <div id="left">
+                 <div id="l1">玩 家 一 生  命</div>
+                 <div id="Lives1"><img src="./img/first/live/x1.png" ></div>
+            </div>
+            <div id="right">
+             <div id="l2">玩 家 二 生 命</div>
+             <div id="Lives2"><img src="./img/first/live/x1.png" ></div>
+        </div>
+        </div>
+             <!--盆-->
+        <div id="mouse">
+        <img src="./img/third/hamster/d0.png" alt="" id="hamster">
+        <img src="./img/third/squirrel/d0.png" alt="" id="squirrel">         
+        </div>
+         
+        <div class="restart">
+			<div class="gameover">
+				Game Over!!!
+			</div>
+			<div class="scoring1">
+				
+			</div>
+			<div class="scoring2">
+				
+            </div>
+            <div class="next">
+                <a href="story4.html">下一关卡</a>
+            </div>
+			<div class="restart_btn">
+				重新开始
+			</div>
+			<div class="close">
+				<a href="index.html">退出游戏</a>
+			</div>
+        </div>
+    </div>
+</body>
+<script src="js/chinese_era.js"></script>
+</html>

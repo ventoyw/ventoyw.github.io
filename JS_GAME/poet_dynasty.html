@@ -1,0 +1,92 @@
+<!-- 
+诗人朝代玩法介绍
+双人游戏
+玩家一：左侧诗人，按动 A S D W控制诗人移动，接到唐朝诗人加分，接到宋朝诗人减分
+玩家二：右侧诗人，按动↑↓←→控制诗人移动，接到宋朝诗人加分，接到唐朝诗人减分 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, heaven-scale=1.0">
+    <title>关卡四：诗人一朝代</title>
+    <link rel="stylesheet" href="css/poet_dynasty.css">
+</head>
+<body>
+    <div class="game_body">
+        <audio src="bgsound4.mp3" autoplay="autoplay" loop="-1"></audio>
+        <div id="pre_page"> 
+            <div id="text">
+            <p>诗人朝代玩法介绍<br>
+                双人游戏<br>
+                玩家一：左侧诗人，按动 A S D W控制诗人移动，接到唐朝诗人加分，接到宋朝诗人减分 <br>
+                玩家二：右侧诗人，按动↑↓←→控制诗人移动，接到宋朝诗人加分，接到唐朝诗人减分
+            </p>
+            </div>
+            <div id="start">
+                <a href = "javascript:void(0)" 
+				onclick = "document.getElementById('text').style.display='none';
+				           document.getElementById('start').style.display='none';
+                           document.getElementById('pre_page').style.display='none';">
+				<img src="./img/a.png" alt=""></a>
+            </div>
+        </div>
+        <div class="progress"></div>
+           <!--分数-->
+
+           <div id="up">
+               <div id="mid">
+                   <div id="play1">
+                        <!-- <div id="s1">得  分：</div> -->
+                        <div id="score1">0</div>
+                   </div>
+                    <div id="play2">
+                        <!-- <div id="s2">：得  分</div> -->
+                        <div id="score2">0</div>
+                    </div>                    
+               </div>
+               <div id="left">
+                    <div id="l1">玩 家 一 生  命</div>
+                    <div id="Lives1"><img src="./img/first/live/x1.png" ></div>
+               </div>
+               <div id="right">
+                <div id="l2">玩 家 二 生 命</div>
+                <div id="Lives2"><img src="./img/first/live/x1.png" ></div>
+           </div>
+           </div>
+
+	
+        
+       
+
+
+             <!--盆-->
+        <div id="people">
+        <img src="./img/fourth/people1/f1.png" alt="" id="people1">
+        <img src="./img/fourth/people2/f2.png" alt="" id="people2">         
+        </div>
+         
+        <div class="restart">
+			<div class="gameover">
+				Game Over!!!
+			</div>
+			<div class="scoring1">
+				
+			</div>
+			<div class="scoring2">
+				
+            </div>
+            <div class="previous">
+                <a href="story3.html">上一关卡</a>
+            </div>
+			<div class="restart_btn">
+				重新开始
+			</div>
+			<div class="close">
+				<a href="index.html">退出游戏</a>
+			</div>
+        </div>
+    </div>
+</body>
+<script src="js/poet_dynasty.js"></script>
+</html>

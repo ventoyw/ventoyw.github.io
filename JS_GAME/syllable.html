@@ -1,0 +1,85 @@
+<!-- 平仄区分玩法介绍
+    双人游戏
+  玩家一：左侧绿色小鸟，按动ASDW控制小鸟移动，吃到声母加分，吃到韵母减分 
+  玩家二：右侧红色小鸟，按动上下左右箭头控制小鸟移动，吃到韵母加分，吃到声母减分
+--> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关卡一：音节辨别</title>
+    <link rel="stylesheet" href="css/syllable.css">
+</head>
+<body>
+    <div class="game_body">
+        <audio src="bgsound1.mp3" autoplay="autoplay" loop="-1"></audio>
+        <div id="pre_page"> 
+            <div id="text">
+            <p>音节玩法介绍<br>
+                双人游戏<br>
+                玩家一：左侧小鸟，按动 A S D W控制小鸟移动，吃到声母加分，吃到韵母减分 <br>
+                玩家二：右侧小鸟，按动↑↓←→控制小鸟移动，吃到韵母加分，吃到声母减分
+            </p>
+            </div>
+            <div id="start">
+                <a href = "javascript:void(0)" 
+				onclick = "document.getElementById('text').style.display='none';
+				           document.getElementById('start').style.display='none';
+                           document.getElementById('pre_page').style.display='none';">
+				<img src="img/a.png" alt=""></a>
+            </div>
+        </div>
+        <div class="progress"></div>
+           <!--分数-->
+           <div id="up">
+            <div id="mid">
+                <div id="play1">
+                     <!-- <div id="s1">得  分：</div> -->
+                     <div id="score1">0</div>
+                </div>
+                 <div id="play2">
+                     <!-- <div id="s2">：得  分</div> -->
+                     <div id="score2">0</div>
+                 </div>                    
+            </div>
+            <div id="left">
+                 <div id="l1">玩 家 一 生  命</div>
+                 <div id="Lives1"><img src="./img/first/live/x1.png" ></div>
+            </div>
+            <div id="right">
+             <div id="l2">玩 家 二 生 命</div>
+             <div id="Lives2"><img src="./img/first/live/x1.png" ></div>
+        </div>
+        </div>
+             <!--盆-->
+        <div id="bird">
+        <img src="img/first/green_birds/right-0.png" alt="" id="bird1">
+        <img src="img/first/red_birds/left-0.png" alt="" id="bird2">         
+        </div>
+         
+        <div class="restart">
+			<div class="gameover">
+				Game Over!!!
+			</div>
+			<div class="scoring1">
+				
+			</div>
+			<div class="scoring2">
+				
+            </div>
+            <div class="next">
+                <a href="story2.html">下一关卡</a>
+            </div>
+			<div class="restart_btn">
+				重新开始
+			</div>
+			<div class="close">
+				<a href="index.html">退出游戏</a>
+			</div>
+        </div>
+    </div>
+</body>
+<script src="js/syllable.js"></script>
+</html>

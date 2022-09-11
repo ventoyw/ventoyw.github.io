@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>register</title>
+ <style>
+* {
+    margin: 0px;
+    padding: 0px;
+}
+/*整体样式，主要包括背景字体字体颜色等*/
+body {
+    color: rgb(250, 242, 242);
+    background-size: 100%;
+    background-attachment: fixed;
+}
+span{
+    width: 15vw;
+    color: red;
+}
+
+/*协议链接颜色*/
+a {
+    color: rgb(172, 196, 254);
+    text-decoration: none;
+}
+
+#information {
+    width: 46vw;
+    margin: 4vw auto;
+    font-size: 1.5vw;
+}
+#information img{
+    margin-left: 3.5vw;
+}
+label {
+    display: inline-block;
+    margin-left: 1vw;
+    width: 13vw;
+    height: 2vw;
+}
+/* form */
+form{
+    position: relative;
+    margin: auto;
+    margin-top: 5%;
+    width: 50vw;
+    background-color: rgba(0, 0, 0, 0.6);
+    border:0.3vw solid rgb(249, 246, 246) ;
+    border-radius: 3vw;
+    /* 相对于现在所处位置的位移变化，x便偏移自己宽度的50%，y偏移自己高度的50% */
+}
+form a{
+   color: rgb(246, 250, 253);
+   text-decoration: dashed;
+}
+/*输入框样式*/
+.input {
+    font-family: "宋体";
+    width: 15vw;
+    height: 2.6vw;
+    /* border-radius: 1vw; */
+}
+/*协议框样式*/
+.checkbox {
+    font-size: 1.2vw;
+    margin-left: 7vw;
+}
+
+/*注册按钮样式*/
+#register {
+    font-family: "黑体";
+    width: 26vw;
+    height: 3vw;
+    border-radius:2vw;
+    background: rgb(91, 162, 255);
+    border: 0.1vw solid silver;
+    color: white;
+    font-size: 1.3vw;
+    cursor: pointer;
+    margin-top: 1vw;
+    margin-left:4vw;
+}
+/*验证码*/
+.code {
+    font-family: initial;
+    font-style: italic;
+    color: rgb(17, 36, 60);
+    font-size: 2.6vw;
+    border: 0;
+    letter-spacing: 0.3vw;
+    font-weight: bolder;
+    float: left;
+    cursor: pointer;
+    width: 9vw;
+    height:2.8vw;
+    line-height: 3vw;
+    text-align: center;
+    background-color: rgb(204, 213, 236);
+    margin-top: -2.8vw;
+    margin-left: 30vw;
+}
+
+/*更换验证码的解析文字样式*/
+.change {
+    text-decoration:underline;
+    font-size: 1.5vw;
+    color: #ffffff;
+    margin-top: -2vw;
+    margin-left: 39vw;
+}
+
+/*更换验证码-鼠标点击文字样式*/
+.change:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    /* 鼠标变成小手 */
+}
+        </style>
+        <script type="text/javascript">
+    //打开窗口时加载方法        
+    window.onload = function(){//加载项
+        createCode(4); //初始化验证码
+        var submit = document.getElementById("register");
+        //以下实现必须接受协议才能提交的功能
+        submit.onclick = function () {
+          if(!document.getElementById("checkbox").checked){
+              alert("请先接受协议哦");
+              return false;
+            }
+        }
+    }
+    //设置提示信息方法
+    function setInfo(id, info){
+    document.getElementById(id).innerText=info;
+    }
+    //验证用户名方法
+    function checkUsername(id, infoId) {
+     username = document.getElementById(id).value;
+        if (username==0) {
+        setInfo(infoId,'用户名不能为空');
+        return false;
+        }
+        return true;       
+    }
+    //验证密码方法
+    function checkPassword(id, infoId) {        
+         txtPassword = document.getElementById(id).value;        
+        if (txtPassword==0) {
+            setInfo(infoId,'密码不能为空');
+            return false;
+        }
+        return true;       
+    }
+    //验证重复密码方法
+    function checkPasswordAgain(pwd1, pwd2, infoId){
+         txtPwd1 = document.getElementById(pwd1).value;
+         txtPwd2 = document.getElementById(pwd2).value;
+        if(txtPwd2==0) {
+            setInfo(infoId,'确认密码不能为空');
+            return false;
+        }
+        if(txtPwd1!= txtPwd2){
+            setInfo(infoId, "两次密码不一致");
+            return false;
+        }
+        return true; 
+    }
+    // 电子邮箱方法
+    function checkEmail(id,infoId) {
+        var reg = /^[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?$/;
+         txtEmail = document.getElementById(id).value;
+        if(!reg.test(txtEmail)) {
+            setInfo(infoId, '请输入正确邮箱地址');
+            return false;
+        }
+        return true;
+    }
+    //生成验证码方法
+    function createCode(length) {
+    var code = "";
+    var codeLength = parseInt(length); //验证码的长度
+    var checkCode = document.getElementById("checkCode");
+    //所有候选组成验证码的字符
+    var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+    'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o',
+    'p','q','r','s','t','u','v','w','x','y','z',
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+    'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); 
+    //循环组成验证码的字符串
+    for (var i = 0; i < codeLength; i++)
+    {
+        //获取随机验证码下标
+        var charNum = Math.floor(Math.random() * 62);
+        //组合成指定字符验证码
+        code += codeChars[charNum];
+        }
+        if (checkCode)
+        {
+        //为验证码区域添加样式名
+        checkCode.className = "code";
+        //将生成验证码赋值到显示区
+        checkCode.innerHTML = code;
+        }
+    }
+
+    //检查验证码是否正确的方法
+    function checkinputCode(checkCode,inputCode,infoId)
+        {
+        //获取显示区生成的验证码
+        var checkCode = document.getElementById("checkCode").innerHTML;
+        //获取输入的验证码
+        var inputCode = document.getElementById("inputCode").value;
+        console.log(checkCode);
+        console.log(inputCode);
+        if (inputCode.length <= 0)
+        {
+            alert("验证码不能为空");
+        }
+        else if(inputCode.toUpperCase() != checkCode.toUpperCase())
+        {
+            alert("验证码输入错误");
+            createCode(4);
+        }
+        else 
+            return true;     
+        }    
+     //清除红色错误信息方法
+     function clearInfo(id) {
+        document.getElementById(id).innerText='';
+        
+    }
+        
+    //注册成功提示方法
+    function success() {
+        var info="注册成功，欢迎你✿"+"\n"+"\n"+"您的信息为:"+"\n"+"用户名:"+username+"\n"+
+        "密码为:"+txtPwd1+"\n"+"确认密码为:"+txtPwd2+"\n"+"邮箱为:"+txtEmail;
+        alert(info);
+    }
+    //校验所有表单元素的内容
+    function checkAll(){
+        if(checkUsername('username','usernameInfo')&checkPassword('pass', 'passwordInfo')
+        &checkPasswordAgain('pass', 'passwordAgain', 'passwordAgainInfo')
+        &checkEmail('email', 'emailInfo')) 
+        {
+        success();
+        } 
+        else{
+            return false;
+        }
+    }
+        </script>
+    </head>
+ 
+    <body background="./img/bg0.jpg" no-repeat>
+    <form onsubmit="checkAll();">
+        <div  id="information">
+            <!--required限定必须填不能为空-->
+            
+            <label><img src="./img/register/name.png" alt=""></label><input class="input" type="text" id="username" placeholder="请输入用户名" autofocus="autofocus" onblur="checkUsername('username', 'usernameInfo')" onfocus="clearInfo('usernameInfo')"/>
+            <span id="usernameInfo"></span>
+            <br>
+            <br>
+            <label><img src="./img/register/sex.png" alt=""></label><input type="radio" name="sex" value="man" checked="true"> 男 
+            <input type="radio" name="sex" value="woman"> 女 
+            <br>
+            <br>
+            <label><img src="./img/register/pwd.png" alt=""></label><input class="input" type="password" id="pass" placeholder="请输入密码" onblur="checkPassword('pass', 'passwordInfo')" onfocus="clearInfo('passwordInfo')" /> <span id="passwordInfo"></span><br>
+            <br>
+            <label ><img src="./img/register/pwd2.png" alt=""></label><input class="input" type="password" id="passwordAgain" placeholder="请再次输入密码" onblur="checkPasswordAgain('pass', 'passwordAgain', 'passwordAgainInfo')" onfocus="clearInfo('passwordAgainInfo')" /><span id="passwordAgainInfo"></span><br>
+            <br>
+            <label><img src="./img/register/birth.png" alt=""></label><input class="input" type="date" value="1980-01-01" class="input"><br>
+            <br>
+            <label><img src="./img/register/mail.png" alt=""></label><input class="input" type="text" id="email" placeholder="请输入电子邮箱" onblur="checkEmail('email', 'emailInfo')" onfocus="clearInfo('emailInfo')" /><span id="emailInfo"></span><br>
+            <br>
+            <label><img src="./img/register/check.png" alt=""></label><input class="input"type="text" id="inputCode"  placeholder="不区分大小写"  onblur="checkinputCode('inputCode', 'inputCodeInfo')" onfocus="clearInfo('inputCodeInfo')"><span id="inputCodeInfo"></span><br>
+            <div id="checkCode" class="code"  onclick="createCode(4)" ></div>
+            <div class="change" onclick="createCode(4)">再来一张</div><br>
+            <br>    
+            <div class="checkbox"><input type="checkbox" id="checkbox" onclick="element.disabled=true" style="margin-right: 10px;" >我已阅读并接受<a href="agreement.txt" target="_blank">《注册须知》</a></div>
+        <button id="register" type="submit" >立即注册</button>
+        <a href="login.html">已有帐号？去登陆</a>
+      </div>  
+    </form>
+        
+
+   
+         
